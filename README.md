@@ -1,2 +1,1 @@
-# IBProject
-my high school project
+# Ibproject
