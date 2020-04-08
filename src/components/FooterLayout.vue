@@ -1,15 +1,22 @@
 <template>
-  <footer>
-      <div id="GeInfo">
-          <img src="../assets/logoGE.jpg" alt=""/>
-          <span id="nomeGE">
-              6º Grupo Escoteiro Santos Dumont
-          </span>
-      </div>
-      <div id="devInfo">
-          <span>Criadores: Mario Massari</span>
-      </div>
-  </footer>
+    <b-card-footer id="rodape">
+        <b-row>
+            <b-col sm="6" align-self="center">
+                <div id="GeInfo">
+                    <img src="../assets/logoGE.jpg" alt=""/>
+                    <span id="nomeGE">
+                        6º Grupo Escoteiro Santos Dumont
+                    </span>
+                </div>
+            </b-col>
+
+            <b-col sm="6" align-self="center">
+                <div id="devInfo">
+                    <span>Criadores: Mario Massari</span>
+                </div>
+            </b-col>
+        </b-row>
+    </b-card-footer>
 </template>
 
 <script>
@@ -19,14 +26,16 @@ export default {
 </script>
 
 <style>
-footer {
-    display: inline-flex;
-    align-items: baseline;
-    height: 100%;
-    border-top: 1em solid #feca08;
-    text-align: center;
+#rodape {
+    border-top: 5px solid #feca08;
     background-color:#1e2a78;
     color: #FFF;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+
     
 }
 
@@ -35,16 +44,5 @@ img {
     width: 100px;
     height: 100px;
     margin: 5px;
-}
-
-#devInfo{
-    width: 50%;
-    text-align: right;
-    margin: 10px;
-}
-
-#GeInfo {
-    width: 50%;
-    text-align: left;
 }
 </style>
