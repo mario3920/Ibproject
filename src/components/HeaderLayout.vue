@@ -1,10 +1,12 @@
 <template>
-  <b-card-header id="cabecalho">
+  <b-card-header id="cabecalho" slot="">
     <b-row>
+
       <!-- logo space -->
       <b-col sm="4" align-self="center">
         <span id="titulo">Almanaque do Escoteiro</span>
       </b-col>
+
       <!-- navegation space -->
       <b-col sm="6"> 
         <b-navbar-nav id="navbar">
@@ -14,8 +16,9 @@
           <router-link id="navBtn" to="#">Canções</router-link>
         </b-navbar-nav>
       </b-col>
+
       <!--login button space -->
-      <b-col sm="1" align-self="center">
+      <b-col sm="2" align-self="center">
           <router-link id="login" to="/login">Login</router-link>
       </b-col>
 
@@ -57,6 +60,6 @@ export default {};
   color: black;
   font-weight: 500;
   background-color: #feca08;
-  padding: 10px 30px 10px 30px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
 }
 </style>
