@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <p>ujasbiofdgausgbfiougbuaisdof</p>
   </div>
 </template>
 

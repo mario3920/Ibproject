@@ -10,8 +10,8 @@
       <!-- navegation space -->
       <b-col sm="6"> 
         <b-navbar-nav id="navbar">
-          <router-link id="navBtn" to="/about">Inicio</router-link>
-          <router-link id="navBtn" to="#">Atividades</router-link>
+          <router-link id="navBtn" to="/">Inicio</router-link>
+          <router-link id="navBtn" to="/atividades">Atividades</router-link>
           <router-link id="navBtn" to="#">Projetos</router-link>
           <router-link id="navBtn" to="#">Canções</router-link>
         </b-navbar-nav>
