@@ -1,14 +1,13 @@
 <template>
-  <b-card-header id="cabecalho" slot="">
+  <b-card-header id="cabecalho" slot>
     <b-row>
-
       <!-- logo space -->
       <b-col sm="4" align-self="center">
         <span id="titulo">Almanaque do Escoteiro</span>
       </b-col>
 
       <!-- navegation space -->
-      <b-col sm="6"> 
+      <b-col sm="6">
         <b-navbar-nav id="navbar">
           <router-link id="navBtn" to="/">Inicio</router-link>
           <router-link id="navBtn" to="/atividades">Atividades</router-link>
@@ -19,9 +18,8 @@
 
       <!--login button space -->
       <b-col sm="2" align-self="center">
-          <router-link id="login" to="/login">Login</router-link>
+        <router-link id="login" to="/login">Login</router-link>
       </b-col>
-
     </b-row>
   </b-card-header>
 </template>
@@ -31,8 +29,7 @@ export default {};
 </script>
 
 <style>
-
-#cabecalho  {
+#cabecalho {
   border-bottom: 5px solid #feca08;
   color: white;
   font-size: 1.5em;
@@ -44,14 +41,13 @@ export default {};
   flex-direction: row;
 }
 
-
 #titulo {
-
   letter-spacing: 0.2em;
   font-weight: 500;
 }
 
-#navBtn, #nomeGrupo {
+#navBtn,
+#nomeGrupo {
   padding: 1em 1.2em;
   color: white;
 }
@@ -60,6 +56,8 @@ export default {};
   color: black;
   font-weight: 500;
   background-color: #feca08;
+  border: 0;
+  border-radius: 8px;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 </style>

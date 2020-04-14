@@ -11,7 +11,7 @@
       <b-progress variant="danger" :max="segContador" :value="contador" height="4px"></b-progress>
     </b-alert>
 
-    <b-row class="login-container"> 
+    <b-row class="login-container">
       <!-- blank left space -->
       <b-col sm="3"></b-col>
 
@@ -20,16 +20,22 @@
       <b-col sm="6" align-self="center">
         <b-form-group>
           <!-- user input space -->
-          <b-form-group label-cols="2" label="Login:" label-for="user">
+          <b-form-group label-cols="2" label="Login:" label-for="user" class="txtLogin">
             <b-form-input class id="user"></b-form-input>
           </b-form-group>
 
           <!-- password input space -->
-          <b-form-group label-cols="2" label="Senha:" label-for="Password">
+          <b-form-group label-cols="2" label="Senha:" label-for="Password" class="txtLogin">
             <b-form-input type="Password" id="Pass"></b-form-input>
           </b-form-group>
 
-          <b-button id="btnLogin" @click="mostrarAlerta">Button</b-button>
+          <b-button
+            pill
+            variant="primary"
+            id="btnLogin"
+            @click="mostrarAlerta"
+            class="button-login"
+          >Fazer login </b-button>
         </b-form-group>
       </b-col>
 
@@ -62,7 +68,9 @@ export default {
 
 
 <style lang="scss">
-.login-container{
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+.login-container {
   width: 100%;
   max-width: 1220px;
   height: 65vh;
@@ -71,5 +79,17 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.button-login {
+  width: 35%;
+  height: 45px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+.txtLogin {
+  font-size: 20px;
+  font-weight: 700;
 }
 </style>
