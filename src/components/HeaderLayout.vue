@@ -11,8 +11,8 @@
         <b-navbar-nav id="navbar">
           <router-link id="navBtn" to="/">Inicio</router-link>
           <router-link id="navBtn" to="/atividades">Atividades</router-link>
-          <router-link id="navBtn" to="#">Projetos</router-link>
-          <router-link id="navBtn" to="#">Canções</router-link>
+          <router-link id="navBtn" to="/projetos">Projetos</router-link>
+          <router-link id="navBtn" to="/cancoes">Canções</router-link>
         </b-navbar-nav>
       </b-col>
 
@@ -21,7 +21,7 @@
 
         <router-link id="login" to="/login">Login</router-link>
 
-        <router-link id="login2" to="/castrar-se" >Cadastrar-se</router-link>
+        <router-link id="register" to="/cadastro" >Cadastrar-se</router-link>
       </b-col>
     </b-row>
   </b-card-header>
@@ -55,7 +55,7 @@ export default {};
   color: white;
 }
 
-#cabecalho #login {
+#login {
   color: black;
   font-weight: 500;
   background-color: #feca08;
@@ -63,7 +63,8 @@ export default {};
   border-radius: 8px;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
-#login2{
+
+#register{
   color: black;
   font-weight: 500;
   background-color: #feca08;
@@ -73,4 +74,5 @@ export default {};
   margin-left: 15px;
   margin-right: 5px;
 }
+
 </style>

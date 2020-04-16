@@ -41,7 +41,7 @@ const routes = [
     import("../views/Login.vue")
   },
   {
-    path: "/castrar-se",
+    path: "/cadastro",
     name: "Register",
 
     component: () =>

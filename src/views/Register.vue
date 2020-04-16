@@ -85,7 +85,7 @@ export default {
   margin: 0 auto;
   margin-bottom:25px;
 
-
+ 
   display: flex;
   align-items: center;
   justify-content: space-between;

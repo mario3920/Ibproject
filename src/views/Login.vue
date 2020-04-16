@@ -17,7 +17,7 @@
 
       <!-- login center space -->
 
-      <b-col sm="6" align-self="center">
+      <b-col class="login-col" sm="6" align-self="center">
         <b-form-group>
           <!-- user input space -->
           <b-form-group label-cols="2" label="Login:" label-for="user" class="txtLogin">
@@ -32,7 +32,6 @@
           <b-button
             pill
             variant="primary"
-            id="btnLogin"
             @click="mostrarAlerta"
             class="button-login"
           >Fazer login </b-button>
