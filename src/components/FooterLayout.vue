@@ -1,6 +1,6 @@
 <template>
     <b-card-footer id="rodape">
-        <b-row>
+        <b-row >
             <b-col sm="6" align-self="center">
                 <div id="GeInfo">
                     <img src="../assets/logoGE.jpg" alt=""/>

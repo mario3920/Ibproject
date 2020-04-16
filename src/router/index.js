@@ -39,6 +39,13 @@ const routes = [
 
     component: () =>
     import("../views/Login.vue")
+  },
+  {
+    path: "/castrar-se",
+    name: "Register",
+
+    component: () =>
+    import("../views/Register.vue")
   }
 ];
 

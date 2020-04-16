@@ -2,7 +2,7 @@
   <b-card-header id="cabecalho" slot>
     <b-row>
       <!-- logo space -->
-      <b-col sm="4" align-self="center">
+      <b-col sm="3" align-self="center">
         <span id="titulo">Almanaque do Escoteiro</span>
       </b-col>
 
@@ -17,8 +17,11 @@
       </b-col>
 
       <!--login button space -->
-      <b-col sm="2" align-self="center">
+      <b-col sm="3" align-self="center">
+
         <router-link id="login" to="/login">Login</router-link>
+
+        <router-link id="login2" to="/castrar-se" >Cadastrar-se</router-link>
       </b-col>
     </b-row>
   </b-card-header>
@@ -59,5 +62,15 @@ export default {};
   border: 0;
   border-radius: 8px;
   padding: 0.5rem 1rem 0.5rem 1rem;
+}
+#login2{
+  color: black;
+  font-weight: 500;
+  background-color: #feca08;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-left: 15px;
+  margin-right: 5px;
 }
 </style>
