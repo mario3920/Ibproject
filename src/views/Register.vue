@@ -21,29 +21,39 @@
         <b-form-group>
           <!-- user input space -->
           <b-form-group label-cols="4" label="Email:" label-for="email" class="txtLogin">
-            <b-form-input class id="email"></b-form-input>
+            <b-form-input class id="email" v-model="email"></b-form-input>
           </b-form-group>
 
-          <b-form-group label-cols="4" label="Confirmar email:" label-for="confEmail" class="txtLogin">
-            <b-form-input class id="confEmail"></b-form-input>
+          <b-form-group
+            label-cols="4"
+            label="Confirmar email:"
+            label-for="confEmail"
+            class="txtLogin"
+          >
+            <b-form-input class id="confEmail" v-model="confEmail"></b-form-input>
           </b-form-group>
 
           <!-- password input space -->
           <b-form-group label-cols="4" label="Senha:" label-for="Password" class="txtLogin">
-            <b-form-input type="Password" id="Pass" ></b-form-input>
+            <b-form-input type="password" id="Pass" v-model="senha"></b-form-input>
           </b-form-group>
 
-          <b-form-group label-cols="4" label="Confirmar senha:" label-for="confPassword" class="txtLogin">
-            <b-form-input type="confPassword" id="Pass"></b-form-input>
+          <b-form-group
+            label-cols="4"
+            label="Confirmar senha:"
+            label-for="confPassword"
+            class="txtLogin"
+          >
+            <b-form-input type="password" id="Pass" v-model="confSenha"></b-form-input>
           </b-form-group>
 
           <b-button
             pill
             variant="primary"
             id="btnLogin"
-            @click="mostrarAlerta"
+            @click="cadastro"
             class="button-login"
-          >confirmar cadastro </b-button>
+          >confirmar cadastro</b-button>
         </b-form-group>
       </b-col>
 
@@ -54,11 +64,17 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
   data() {
     return {
       segContador: 10,
-      contador: 0
+      contador: 0,
+      email: "",
+      senha: "",
+      confEmail: "",
+      confSenha: ""
     };
   },
 
@@ -69,6 +85,29 @@ export default {
 
     mostrarAlerta() {
       this.contador = this.segContador;
+    },
+    cadastro() {
+      if (this.email == this.confEmail) {
+        if (this.senha == this.confSenha) {
+          if (this.senha.length >= 6) {
+            firebase
+              .auth()
+              .createUserWithEmailAndPassword(this.email, this.senha)
+              .then(
+                this.$router.replace('')
+              );
+          } else {
+            alert("Digite uma senha mais forte! obs: minimo de 6 carateres");
+            (this.senha.value = ""), (this.confSenha.value = "");
+          }
+        } else {
+          alert("As senhas digitados são diferentes ...");
+          (this.senha.value = ""), (this.confSenha.value = "");
+        }
+      } else {
+        alert("Os emails digitados são diferentes ...");
+        (this.email.value = ""), (this.confEmail.value = "");
+      }
     }
   }
 };
@@ -83,9 +122,8 @@ export default {
   max-width: 1520px;
   height: 65vh;
   margin: 0 auto;
-  margin-bottom:25px;
+  margin-bottom: 25px;
 
- 
   display: flex;
   align-items: center;
   justify-content: space-between;
