@@ -21,20 +21,15 @@
         <b-form-group>
           <!-- user input space -->
           <b-form-group label-cols="2" label="Login:" label-for="user" class="txtLogin">
-            <b-form-input class id="user"></b-form-input>
+            <b-form-input class id="user" v-model="email"></b-form-input>
           </b-form-group>
 
           <!-- password input space -->
           <b-form-group label-cols="2" label="Senha:" label-for="Password" class="txtLogin">
-            <b-form-input type="Password" id="Pass"></b-form-input>
+            <b-form-input type="password" id="Pass" v-model="senha"></b-form-input>
           </b-form-group>
 
-          <b-button
-            pill
-            variant="primary"
-            @click="mostrarAlerta"
-            class="button-login"
-          >Fazer login </b-button>
+          <b-button pill variant="primary" @click="login" class="button-login">Fazer login</b-button>
         </b-form-group>
       </b-col>
 
@@ -45,11 +40,15 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
   data() {
     return {
       segContador: 10,
-      contador: 0
+      contador: 0,
+      email: "",
+      senha: ""
     };
   },
 
@@ -60,6 +59,12 @@ export default {
 
     mostrarAlerta() {
       this.contador = this.segContador;
+    },
+    login() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.senha)
+        .then(this.$router.replace("/"), alert("Login realizado com sucesso!"));
     }
   }
 };

@@ -8,7 +8,14 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    meta:{
+      requeresAuth: true
+    }
+  },
+  {
+    path: "*" ,
+    redirect: "/login"
   },
   {
     path: "/atividades",
@@ -24,28 +31,28 @@ const routes = [
     name: "Projetos",
 
     component: () =>
-    import("../views/Projetos.vue")
+      import("../views/Projetos.vue")
   },
   {
     path: "/cancoes",
     name: "Canções",
 
     component: () =>
-    import("../views/Cancoes.vue")
+      import("../views/Cancoes.vue")
   },
   {
     path: "/login",
     name: "Login",
 
     component: () =>
-    import("../views/Login.vue")
+      import("../views/Login.vue")
   },
   {
     path: "/cadastro",
     name: "Register",
 
     component: () =>
-    import("../views/Register.vue")
+      import("../views/Register.vue")
   }
 ];
 

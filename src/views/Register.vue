@@ -94,7 +94,8 @@ export default {
               .auth()
               .createUserWithEmailAndPassword(this.email, this.senha)
               .then(
-                this.$router.replace('')
+                this.$router.replace("/"),
+                alert("Cadastro realizado com sucesso!")
               );
           } else {
             alert("Digite uma senha mais forte! obs: minimo de 6 carateres");
