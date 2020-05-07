@@ -6,5 +6,6 @@ axios.defaults.baseURL = "https://projetoweb-b3f0a.firebaseio.com/"
 Vue.use({
     install(Vue) {
         Vue.prototype.$http = axios
+        
     }
 })
