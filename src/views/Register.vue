@@ -7,7 +7,7 @@
       @dismissed="contador=0"
       @dismiss-count-down="contagemRegressiva"
     >
-      <p>Algo deu errado no seu cadastro, verifique e tente novamente ...</p>
+      <p>{{msgErro}}</p>
       <b-progress variant="danger" :max="segContador" :value="contador" height="4px"></b-progress>
     </b-alert>
 
@@ -74,7 +74,8 @@ export default {
       email: "",
       senha: "",
       confEmail: "",
-      confSenha: ""
+      confSenha: "",
+      msgErro: ""
     };
   },
 
@@ -87,7 +88,7 @@ export default {
       this.contador = this.segContador;
     },
     cadastro() {
-      if (this.email == this.confEmail) {
+      if (this.email == this.confEmail && this.email != "" && this.confEmail != "") {
         if (this.senha == this.confSenha) {
           if (this.senha.length >= 6) {
             firebase
@@ -98,15 +99,18 @@ export default {
                 alert("Cadastro realizado com sucesso!")
               );
           } else {
-            alert("Digite uma senha mais forte! obs: minimo de 6 carateres");
+            this.msgErro = "Digite uma senha mais forte! obs: minimo de 6 carateres"
+            this.mostrarAlerta();
             (this.senha.value = ""), (this.confSenha.value = "");
           }
         } else {
-          alert("As senhas digitados são diferentes ...");
+          this.msgErro = "As senhas digitados são diferentes ..."
+          this.mostrarAlerta();
           (this.senha.value = ""), (this.confSenha.value = "");
         }
       } else {
-        alert("Os emails digitados são diferentes ...");
+        this.msgErro = "Os emails digitados são diferentes ..."
+        this.mostrarAlerta();
         (this.email.value = ""), (this.confEmail.value = "");
       }
     }
