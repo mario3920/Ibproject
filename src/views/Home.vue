@@ -65,12 +65,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 .home{
   width: 100%;
   margin-bottom: 20%;
   margin-left: 0;
   margin-top: 0;
-  display: flex;
+  display: flexbox;
   justify-content: center;
 }
 </style>
