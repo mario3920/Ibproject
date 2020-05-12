@@ -2,13 +2,11 @@
   <b-container fluid="true" id="loginContainer">
     <b-alert
       :show="contador"
-      dismissible
-      variant="danger"
+      :variant= tipoMsg
       @dismissed="contador=0"
       @dismiss-count-down="contagemRegressiva"
     >
       <p>{{msgErro}}</p>
-      <b-progress variant="danger" :max="segContador" :value="contador" height="4px"></b-progress>
     </b-alert>
 
     <b-row class="login-container">
@@ -69,19 +67,23 @@ import firebase from "firebase";
 export default {
   data() {
     return {
-      segContador: 10,
+      segContador: 2,
       contador: 0,
       email: "",
       senha: "",
       confEmail: "",
       confSenha: "",
-      msgErro: ""
+      msgErro: "",
+      tipoMsg: "danger"
     };
   },
 
   methods: {
     contagemRegressiva(contador) {
       this.contador = contador;
+      if(contador == 0){
+        this.$router.replace("/");
+      }
     },
 
     mostrarAlerta() {
@@ -94,10 +96,7 @@ export default {
             firebase
               .auth()
               .createUserWithEmailAndPassword(this.email, this.senha)
-              .then(
-                this.$router.replace("/"),
-                alert("Cadastro realizado com sucesso!")
-              );
+              .then(this.msgErro = "Cadastro realizado com sucesso!",this.tipoMsg = "success", this.mostrarAlerta() );
           } else {
             this.msgErro = "Digite uma senha mais forte! obs: minimo de 6 carateres"
             this.mostrarAlerta();

@@ -1,14 +1,12 @@
 <template>
   <b-container fluid="true" id="loginContainer">
-    <b-alert
+    <b-alert id="alerta"
       :show="contador"
-      dismissible
-      variant="danger"
+      v-bind:variant= tipoMsg
       @dismissed="contador=0"
       @dismiss-count-down="contagemRegressiva"
     >
-      <p>Login ou senha incorreta ...</p>
-      <b-progress variant="danger" :max="segContador" :value="contador" height="4px"></b-progress>
+      <p>{{msgErro}}</p>
     </b-alert>
 
     <b-row class="login-container">
@@ -45,16 +43,21 @@ import firebase from "firebase";
 export default {
   data() {
     return {
-      segContador: 10,
+      segContador: 2,
       contador: 0,
       email: "",
-      senha: ""
+      senha: "",
+      msgErro: "",
+      tipoMsg: ""
     };
   },
 
   methods: {
     contagemRegressiva(contador) {
       this.contador = contador;
+      if(contador == 0){
+        this.$router.replace("/");
+      }
     },
 
     mostrarAlerta() {
@@ -64,7 +67,7 @@ export default {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.senha)
-        .then(this.$router.replace("/"), alert("Login realizado com sucesso!"));
+        .then(this.msgErro = "Login realizado com sucesso!",this.tipoMsg = "success", this.mostrarAlerta());
     }
   }
 };
