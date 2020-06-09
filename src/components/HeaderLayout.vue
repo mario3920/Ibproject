@@ -16,19 +16,31 @@
         </b-navbar-nav>
       </b-col>
 
-      <!--login button space -->
-      <b-col sm="3" align-self="center">
+      <template v-if="cont == 1">
+        <router-link id="login" to="/login">Logout</router-link>
+      </template>
 
-        <router-link id="login" to="/login">Login</router-link>
+      <template v-else>
+        <!--login button space -->
+        <b-col sm="3" align-self="center">
+          <router-link id="login" to="/login">Login</router-link>
 
-        <router-link id="register" to="/cadastro" >Cadastrar-se</router-link>
-      </b-col>
+          <router-link id="register" to="/cadastro">Cadastrar-se</router-link>
+        </b-col>
+      </template>
     </b-row>
   </b-card-header>
 </template>
 
 <script>
-export default {};
+import firebase from "firebase";
+const currentUser = firebase.auth().currentUser;
+
+export default {
+  cont: 0
+};
+
+
 </script>
 
 <style>
@@ -64,7 +76,7 @@ export default {};
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
-#register{
+#register {
   color: black;
   font-weight: 500;
   background-color: #feca08;
@@ -74,5 +86,4 @@ export default {};
   margin-left: 15px;
   margin-right: 5px;
 }
-
 </style>

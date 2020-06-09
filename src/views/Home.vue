@@ -12,14 +12,11 @@
     >
       <!-- Text slides with image -->
       <b-carousel-slide
-        caption="First slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
         img-src="https://picsum.photos/1024/480/?image=52"
       ></b-carousel-slide>
 
       <!-- Slides with custom text -->
       <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-        <h1>Hello world!</h1>
       </b-carousel-slide>
 
       <!-- Slides with image only -->
@@ -31,7 +28,6 @@
         <template v-slot:img>
           <img
             class="d-block img-fluid w-100"
-            
             src="https://picsum.photos/1024/480/?image=55"
             alt="image slot"
           >
