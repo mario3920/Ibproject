@@ -67,6 +67,9 @@ export default {
       axios.get("/atividades").then(function(response){
         console.log(response.data);
         
+      }).catch(err => {
+        console.log(err);
+        
       })
     }
   }

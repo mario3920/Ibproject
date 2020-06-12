@@ -16,11 +16,11 @@
         </b-navbar-nav>
       </b-col>
 
-      <template v-if="cont == 1">
+      <!-- <template>
         <router-link id="login" to="/login">Logout</router-link>
-      </template>
+      </template> -->
 
-      <template v-else>
+      <template>
         <!--login button space -->
         <b-col sm="3" align-self="center">
           <router-link id="login" to="/login">Login</router-link>
@@ -35,7 +35,6 @@
 <script>
 
 export default {
-  cont: 0
 };
 
 

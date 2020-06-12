@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import firebase from "firebase";
 
 export default {
   data() {
@@ -88,30 +87,6 @@ export default {
 
     mostrarAlerta() {
       this.contador = this.segContador;
-    },
-    cadastro() {
-      if (this.email == this.confEmail && this.email != "" && this.confEmail != "") {
-        if (this.senha == this.confSenha) {
-          if (this.senha.length >= 6) {
-            firebase
-              .auth()
-              .createUserWithEmailAndPassword(this.email, this.senha)
-              .then(this.msgErro = "Cadastro realizado com sucesso!",this.tipoMsg = "success", this.mostrarAlerta() );
-          } else {
-            this.msgErro = "Digite uma senha mais forte! obs: minimo de 6 carateres"
-            this.mostrarAlerta();
-            (this.senha.value = ""), (this.confSenha.value = "");
-          }
-        } else {
-          this.msgErro = "As senhas digitados são diferentes ..."
-          this.mostrarAlerta();
-          (this.senha.value = ""), (this.confSenha.value = "");
-        }
-      } else {
-        this.msgErro = "Os emails digitados são diferentes ..."
-        this.mostrarAlerta();
-        (this.email.value = ""), (this.confEmail.value = "");
-      }
     }
   }
 };

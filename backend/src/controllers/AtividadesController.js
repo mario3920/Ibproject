@@ -2,6 +2,8 @@ const connection = require('../database/connection')
 
 module.exports = {
     async index(request, response) {
+        console.log("teste");
+        
         const atividades = await connection('atividades').select('*')
 
         return response.json(atividades)
