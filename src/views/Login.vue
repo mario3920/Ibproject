@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import axios from "axios"
 
 export default {
   data() {
@@ -64,10 +64,10 @@ export default {
       this.contador = this.segContador;
     },
     login() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.senha)
-        .then(this.msgErro = "Login realizado com sucesso!",this.tipoMsg = "success", this.mostrarAlerta());
+      axios.get("/atividades").then(function(response){
+        console.log(response.data);
+        
+      })
     }
   }
 };

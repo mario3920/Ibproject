@@ -33,8 +33,6 @@
 </template>
 
 <script>
-import firebase from "firebase";
-const currentUser = firebase.auth().currentUser;
 
 export default {
   cont: 0
