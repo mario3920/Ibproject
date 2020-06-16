@@ -64,13 +64,25 @@ export default {
       this.contador = this.segContador;
     },
     login() {
-      axios.get("/atividades").then(function(response){
-        console.log(response.data);
-        
-      }).catch(err => {
-        console.log(err);
-        
-      })
+      axios.get("/escoteiros", {params: this.axiosParams}).then(this.$router.replace("/"))
+      .then(resp => console.log(resp[0].data))
+    }
+
+      // axios({
+      //     method: "post",
+      //     url: "/escoteiros",
+      //     data: {
+      //       id,
+      //       email: this.email,
+      //       senha: this.senha
+      //     }
+      //   }).then(this.$router.replace("/"), localStorage.setItem("id", id));
+  },
+  computed: {
+   axiosParams() {
+        const params = new URLSearchParams();
+        params.append('email', this.email);
+        return params;
     }
   }
 };

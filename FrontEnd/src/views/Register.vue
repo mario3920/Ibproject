@@ -2,7 +2,7 @@
   <b-container fluid="true" id="loginContainer">
     <b-alert
       :show="contador"
-      :variant= tipoMsg
+      :variant="tipoMsg"
       @dismissed="contador=0"
       @dismiss-count-down="contagemRegressiva"
     >
@@ -62,7 +62,9 @@
 </template>
 
 <script>
-
+import axios from "axios";
+const crypto = require("crypto");
+const id = crypto.randomBytes(4).toString("HEX");
 export default {
   data() {
     return {
@@ -80,13 +82,38 @@ export default {
   methods: {
     contagemRegressiva(contador) {
       this.contador = contador;
-      if(contador == 0){
-        this.$router.replace("/");
-      }
     },
 
     mostrarAlerta() {
       this.contador = this.segContador;
+    },
+
+    cadastro() {
+      if (
+        this.email == "" ||
+        this.confEmail == "" ||
+        this.email != this.confEmail
+      ) {
+        this.msgErro = "email não autenticado";
+        this.mostrarAlerta();
+      } else if (
+        this.senha == "" ||
+        this.confSenha == "" ||
+        this.senha != this.confSenha
+      ) {
+        this.msgErro = "senha não autenticada";
+        this.mostrarAlerta();
+      } else {
+        axios({
+          method: "post",
+          url: "/escoteiros",
+          data: {
+            id,
+            email: this.email,
+            senha: this.senha
+          }
+        }).then(this.$router.replace("/"), localStorage.setItem("id", id));
+      }
     }
   }
 };
