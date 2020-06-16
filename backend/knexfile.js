@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: "C:/Users/mario/Desktop/workspace/Workspace VSCode/IBProject/backend/src/database/db.sqlite"
+      filename: "src/database/db.sqlite"
     },
     migrations: {
       directory: './src/database/migrations'
