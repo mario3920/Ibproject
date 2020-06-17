@@ -48,39 +48,41 @@ export default {
       email: "",
       senha: "",
       msgErro: "",
-      tipoMsg: ""
+      tipoMsg: "danger"
     };
   },
 
   methods: {
     contagemRegressiva(contador) {
       this.contador = contador;
-      if(contador == 0){
-        this.$router.replace("/");
-      }
     },
 
     mostrarAlerta() {
       this.contador = this.segContador;
     },
-    login() {
-      axios.get("/escoteiros", {params: this.axiosParams}).then(this.$router.replace("/"))
-      .then(resp => console.log(resp[0].data))
-    }
 
-      // axios({
-      //     method: "post",
-      //     url: "/escoteiros",
-      //     data: {
-      //       id,
-      //       email: this.email,
-      //       senha: this.senha
-      //     }
-      //   }).then(this.$router.replace("/"), localStorage.setItem("id", id));
+    login() {
+      if(this.login != "" && this.senha != ""){
+        axios.get("/escoteiros/login", {params: this.axiosParams}).then(resp =>{
+          if(this.senha == resp.data[0].senha){
+            localStorage.setItem("id", resp.data[0].id);
+            localStorage.setItem("nome", resp.data[0].nome)
+            this.$router.replace("/")
+            window.location.reload()
+          }else{
+            this.msgErro = "Email ou senha inválida"
+            this.mostrarAlerta()
+          }
+        })
+      }else{
+        this.msgErro = "Email ou senha não foi inserido!"
+        this.mostrarAlerta()
+      }
+    }
   },
   computed: {
-   axiosParams() {
-        const params = new URLSearchParams();
+    axiosParams() {
+      const params = new URLSearchParams();
         params.append('email', this.email);
         return params;
     }

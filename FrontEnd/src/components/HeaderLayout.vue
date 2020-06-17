@@ -16,15 +16,17 @@
         </b-navbar-nav>
       </b-col>
 
-      <!-- <template>
-        <router-link id="login" to="/login">Logout</router-link>
-      </template> -->
+      <template id="logoutTemplate" v-if= logado != null >
+        <b-col sm="3" align-self="center">
+        <span id="tituloUser" >Bem vindo novamente, {{user}} </span>
+          <button @click="logout" id="login" to="/">Logout</button>
+        </b-col>
+      </template>
 
-      <template>
+      <template id="loginTemplate" v-else>
         <!--login button space -->
         <b-col sm="3" align-self="center">
           <router-link id="login" to="/login">Login</router-link>
-
           <router-link id="register" to="/cadastro">Cadastrar-se</router-link>
         </b-col>
       </template>
@@ -33,8 +35,29 @@
 </template>
 
 <script>
-
 export default {
+  data(){
+    return{
+      logado: localStorage.getItem("id"),
+      user: localStorage.getItem("nome")
+    }
+  },
+    watch: {
+    logado(){
+      console.log("a");
+      
+    }
+    },
+
+  methods: {
+    logout(){
+      this.$router.replace("/")
+      localStorage.removeItem("id");
+      localStorage.removeItem("nome")
+      window.location.reload()
+    }
+  }
+
 };
 
 
@@ -82,5 +105,9 @@ export default {
   padding: 0.5rem 1rem 0.5rem 1rem;
   margin-left: 15px;
   margin-right: 5px;
+}
+#tituloUser {
+  font-size: 0.6em;
+  font-weight: 500;
 }
 </style>

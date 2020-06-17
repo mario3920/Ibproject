@@ -33,7 +33,7 @@ module.exports = {
             .first()
 
         if (atividades.escoteiros_id != escoteiros_id) {
-            return response.status(401).json({ error: 'Operation not permited.' })
+            return response.status(401)
         }
 
         await connection('atividades').where('id', id).delete()

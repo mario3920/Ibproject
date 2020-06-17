@@ -18,15 +18,15 @@
       <b-col sm="6" align-self="center">
         <b-form-group>
           <!-- user input space -->
+          <b-form-group label-cols="4" label="Nome:" label-for="nome" class="txtLogin">
+            <b-form-input class id="nome" v-model="nome"></b-form-input>
+          </b-form-group>
+
           <b-form-group label-cols="4" label="Email:" label-for="email" class="txtLogin">
             <b-form-input class id="email" v-model="email"></b-form-input>
           </b-form-group>
 
-          <b-form-group
-            label-cols="4"
-            label="Confirmar email:"
-            label-for="confEmail"
-            class="txtLogin"
+          <b-form-group label-cols="4" label="Confirmar email:" label-for="confEmail" class="txtLogin"
           >
             <b-form-input class id="confEmail" v-model="confEmail"></b-form-input>
           </b-form-group>
@@ -36,11 +36,7 @@
             <b-form-input type="password" id="Pass" v-model="senha"></b-form-input>
           </b-form-group>
 
-          <b-form-group
-            label-cols="4"
-            label="Confirmar senha:"
-            label-for="confPassword"
-            class="txtLogin"
+          <b-form-group label-cols="4" label="Confirmar senha:" label-for="confPassword" class="txtLogin"
           >
             <b-form-input type="password" id="Pass" v-model="confSenha"></b-form-input>
           </b-form-group>
@@ -63,13 +59,12 @@
 
 <script>
 import axios from "axios";
-const crypto = require("crypto");
-const id = crypto.randomBytes(4).toString("HEX");
 export default {
   data() {
     return {
       segContador: 2,
       contador: 0,
+      nome: "",
       email: "",
       senha: "",
       confEmail: "",
@@ -89,18 +84,13 @@ export default {
     },
 
     cadastro() {
-      if (
-        this.email == "" ||
-        this.confEmail == "" ||
-        this.email != this.confEmail
-      ) {
+      if(this.nome == ""){
+        this.msgErro = "Nome em branco!";
+        this.mostrarAlerta();
+      }else if ( this.email == "" || this.confEmail == "" || this.email != this.confEmail) {
         this.msgErro = "email não autenticado";
         this.mostrarAlerta();
-      } else if (
-        this.senha == "" ||
-        this.confSenha == "" ||
-        this.senha != this.confSenha
-      ) {
+      } else if ( this.senha == "" || this.confSenha == "" || this.senha != this.confSenha) {
         this.msgErro = "senha não autenticada";
         this.mostrarAlerta();
       } else {
@@ -108,11 +98,21 @@ export default {
           method: "post",
           url: "/escoteiros",
           data: {
-            id,
+            nome: this.nome,
             email: this.email,
             senha: this.senha
           }
-        }).then(this.$router.replace("/"), localStorage.setItem("id", id));
+        }).then(resp => {          
+            if(resp.data == 409){
+              this.msgErro = "Email já existente!"
+              this.mostrarAlerta()
+            }else{
+              localStorage.setItem("nome", this.nome);
+              this.$router.replace("/")
+              localStorage.setItem("id", resp.data.id);
+              window.location.reload()
+            }
+          });
       }
     }
   }
