@@ -109,5 +109,6 @@ export default {
 #tituloUser {
   font-size: 0.6em;
   font-weight: 500;
+  padding: 1rem 1.5rem 1.5rem 1rem;
 }
 </style>
